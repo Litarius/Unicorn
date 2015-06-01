@@ -9,7 +9,7 @@ namespace Unicorn.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        private IServer _server;
+        private readonly IServer _server;
         private IClient _client;
 
         public MainViewModel(IServer server, IClient client)

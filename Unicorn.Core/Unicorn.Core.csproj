@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\BaseClient.cs" />
+    <Compile Include="Client\IClient.cs" />
     <Compile Include="Messages\IMessage.cs" />
     <Compile Include="IUser.cs" />
+    <Compile Include="Messages\Message.cs" />
     <Compile Include="Messages\MessageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\IServer.cs" />
