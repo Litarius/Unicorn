@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Unicorn.Core
+namespace Unicorn.Server
 {
-    public class Class1
+    public class Listener
     {
     }
 }

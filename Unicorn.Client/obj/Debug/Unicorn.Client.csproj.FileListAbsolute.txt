@@ -1,0 +1,5 @@
+D:\Unicorn\Unicorn.Client\bin\Debug\Unicorn.Client.dll
+D:\Unicorn\Unicorn.Client\bin\Debug\Unicorn.Client.pdb
+D:\Unicorn\Unicorn.Client\obj\Debug\Unicorn.Client.csprojResolveAssemblyReference.cache
+D:\Unicorn\Unicorn.Client\obj\Debug\Unicorn.Client.dll
+D:\Unicorn\Unicorn.Client\obj\Debug\Unicorn.Client.pdb

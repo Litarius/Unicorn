@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Unicorn.Server
+namespace Unicorn.Core
 {
-    public class Class1
+    class Message
     {
     }
 }

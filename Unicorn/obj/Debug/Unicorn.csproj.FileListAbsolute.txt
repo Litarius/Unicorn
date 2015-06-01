@@ -1,1 +1,15 @@
 D:\Unicorn\Unicorn\bin\Debug\Unicorn.exe.config
+D:\Unicorn\Unicorn\bin\Debug\Unicorn.exe
+D:\Unicorn\Unicorn\bin\Debug\Unicorn.pdb
+D:\Unicorn\Unicorn\bin\Debug\Unicorn.Core.dll
+D:\Unicorn\Unicorn\bin\Debug\Unicorn.Core.pdb
+D:\Unicorn\Unicorn\obj\Debug\Unicorn.csprojResolveAssemblyReference.cache
+D:\Unicorn\Unicorn\obj\Debug\App.g.cs
+D:\Unicorn\Unicorn\obj\Debug\Unicorn_MarkupCompile.cache
+D:\Unicorn\Unicorn\obj\Debug\Unicorn.g.resources
+D:\Unicorn\Unicorn\obj\Debug\Unicorn.Properties.Resources.resources
+D:\Unicorn\Unicorn\obj\Debug\Unicorn.csproj.GenerateResource.Cache
+D:\Unicorn\Unicorn\obj\Debug\Unicorn.exe
+D:\Unicorn\Unicorn\obj\Debug\Unicorn.pdb
+D:\Unicorn\Unicorn\obj\Debug\View\MainWindow.baml
+D:\Unicorn\Unicorn\obj\Debug\View\MainWindow.g.cs
