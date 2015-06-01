@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using Autofac;
+using Unicorn.Core.Server;
+using Unicorn.ViewModel;
 
 namespace Unicorn
 {
@@ -13,5 +10,13 @@ namespace Unicorn
     /// </summary>
     public partial class App : Application
     {
+        private void App_OnStartup(object sender, StartupEventArgs e)
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterInstance(new Server()).As<IServer>();
+            builder.RegisterType<MainViewModel>();
+
+            var container = builder.Build();
+        }
     }
 }

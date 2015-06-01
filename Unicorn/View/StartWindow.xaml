@@ -1,0 +1,10 @@
+﻿<Window x:Class="Unicorn.View.StartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="StartWindow" Height="300" Width="300">
+    <StackPanel Margin="30" >
+        <RadioButton>Подключиться к комнате</RadioButton>
+        <RadioButton>Создать комнату</RadioButton>
+        <Button>Далее</Button>
+    </StackPanel>
+</Window>

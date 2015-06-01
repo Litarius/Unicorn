@@ -1,9 +1,7 @@
 D:\Unicorn\Unicorn.Core\bin\Debug\Unicorn.Core.dll
 D:\Unicorn\Unicorn.Core\bin\Debug\Unicorn.Core.pdb
-D:\Unicorn\Unicorn.Core\bin\Debug\Unicorn.Client.dll
-D:\Unicorn\Unicorn.Core\bin\Debug\Unicorn.Server.dll
-D:\Unicorn\Unicorn.Core\bin\Debug\Unicorn.Client.pdb
-D:\Unicorn\Unicorn.Core\bin\Debug\Unicorn.Server.pdb
 D:\Unicorn\Unicorn.Core\obj\Debug\Unicorn.Core.csprojResolveAssemblyReference.cache
 D:\Unicorn\Unicorn.Core\obj\Debug\Unicorn.Core.dll
 D:\Unicorn\Unicorn.Core\obj\Debug\Unicorn.Core.pdb
+D:\Unicorn\Unicorn.Core\bin\Debug\Autofac.dll
+D:\Unicorn\Unicorn.Core\bin\Debug\Autofac.xml

@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,18 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Client\BaseClient.cs" />
+    <Compile Include="Messages\IMessage.cs" />
+    <Compile Include="IUser.cs" />
+    <Compile Include="Messages\MessageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server\IServer.cs" />
+    <Compile Include="Server\Server.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Unicorn.Client\Unicorn.Client.csproj">
-      <Project>{fcd542cc-4a50-45a0-ba39-91d04dcd67f2}</Project>
-      <Name>Unicorn.Client</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Unicorn.Server\Unicorn.Server.csproj">
-      <Project>{b959be4c-753b-4aaa-a651-77ff694e63f1}</Project>
-      <Name>Unicorn.Server</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
