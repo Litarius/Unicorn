@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Net;
+﻿using System.Windows.Input;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Messaging;
+using Unicorn.Messages;
 
 namespace Unicorn.ViewModel
 {
@@ -10,6 +12,19 @@ namespace Unicorn.ViewModel
         private bool _isClient;
         private string _userName;
         private string _serverAdress;
+        private ICommand _startCommand;
+
+        public StartViewModel()
+        {
+            _startCommand = new RelayCommand(StartChat);
+        }
+
+        private void StartChat()
+        {
+            MainViewModel.IsServer = _isServer;
+            MainViewModel.Name = _userName;
+            Messenger.Default.Send(new StartMessage(_isServer, _userName));
+        }
 
         public bool IsServer
         {
@@ -39,7 +54,7 @@ namespace Unicorn.ViewModel
             set
             {
                 _userName = value;
-                RaisePropertyChanged(()=>CanStart);
+                RaisePropertyChanged(() => CanStart);
                 RaisePropertyChanged(() => UserName);
             }
         }
@@ -64,5 +79,14 @@ namespace Unicorn.ViewModel
             }
         }
 
+        public ICommand StartCommand
+        {
+            get { return _startCommand; }
+            set
+            {
+                _startCommand = value;
+                RaisePropertyChanged(() => StartCommand);
+            }
+        }
     }
 }

@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Unicorn.Core.Server
 {
     public interface IServer
     {
-        Task Start();
+        List<string> Users { get; set; }
+
+        event Action StatusChanged;
+
+        Task Start(string serverUserName);
     }
 }

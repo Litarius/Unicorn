@@ -47,7 +47,7 @@ namespace Unicorn.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<StartViewModel>();
             SimpleIoc.Default.Register<IServer, Server>();
-            SimpleIoc.Default.Register<BaseClient>();
+            SimpleIoc.Default.Register<IClient, BaseClient>();
         }
 
         public MainViewModel Main

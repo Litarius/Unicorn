@@ -1,9 +1,9 @@
-﻿<Window x:Class="Unicorn.MainWindow"
+﻿<Window x:Class="Unicorn.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow"
-        Width="525"
-        Height="350"
+        Width="800"
+        Height="600"
         DataContext="{Binding Source={StaticResource Locator},
                               Path=Main}">
 
@@ -12,5 +12,23 @@
             <ColumnDefinition Width="4*" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="15*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Grid.ColumnSpan="2">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Закрыть" />
+            </MenuItem>
+        </Menu>
+        <TextBox Grid.Row="1"
+                 Grid.Column="0"
+                 Background="Azure" />
+        <ListBox Grid.Row="1"
+                 Grid.Column="1"
+                 ItemsSource="{Binding Users}" />
+        <TextBox Grid.Row="2" Grid.Column="0" />
+        <Button Grid.Row="2" Grid.Column="1">Отправить</Button>
     </Grid>
 </Window>

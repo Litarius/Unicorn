@@ -1,6 +1,5 @@
 D:\Unicorn\Unicorn.Core\bin\Debug\Unicorn.Core.dll
 D:\Unicorn\Unicorn.Core\bin\Debug\Unicorn.Core.pdb
-D:\Unicorn\Unicorn.Core\obj\Debug\Unicorn.Core.csprojResolveAssemblyReference.cache
 D:\Unicorn\Unicorn.Core\obj\Debug\Unicorn.Core.dll
 D:\Unicorn\Unicorn.Core\obj\Debug\Unicorn.Core.pdb
 D:\Unicorn\Unicorn.Core\bin\Debug\Autofac.dll

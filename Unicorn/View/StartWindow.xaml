@@ -11,14 +11,18 @@
         <RadioButton GroupName="roomType" IsChecked="{Binding IsServer}">Создать комнату</RadioButton>
         <StackPanel Margin="0 10 0 0" Visibility="{Binding IsClient, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Label>Имя пользователя</Label>
-            <TextBox Text="{Binding UserName,UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" />
             <Label>IP сервера</Label>
-            <TextBox Text="{Binding ServerAdress,UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Text="{Binding ServerAdress, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <StackPanel Margin="0 10 0 0" Visibility="{Binding IsServer, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Label>Имя пользователя</Label>
-            <TextBox Text="{Binding UserName,UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <Button Margin="15" IsEnabled="{Binding CanStart}">Далее</Button>
+        <Button Margin="15"
+                Command="{Binding StartCommand}"
+                IsEnabled="{Binding CanStart}">
+            Далее
+        </Button>
     </StackPanel>
 </Window>

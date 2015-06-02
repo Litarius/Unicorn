@@ -10,5 +10,7 @@ namespace Unicorn.Core.Client
     public interface IClient
     {
         void SendMessge(IMessage message);
+
+        void Connect();
     }
 }
