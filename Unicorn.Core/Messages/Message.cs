@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Unicorn.Core.Messages
 {
-    public class Message : IMessage
+    public class Message 
     {
         public Message(MessageType type, string message)
         {

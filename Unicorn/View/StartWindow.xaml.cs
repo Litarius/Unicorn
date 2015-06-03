@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using GalaSoft.MvvmLight.Messaging;
 using Unicorn.Messages;
 
@@ -23,6 +24,11 @@ namespace Unicorn.View
                 a.Show();
                 Close();
             }
+        }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

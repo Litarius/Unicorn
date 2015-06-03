@@ -9,7 +9,7 @@ namespace Unicorn.Core.Client
     {
         protected TcpClient Client;
 
-        public void SendMessge(IMessage message)
+        public void SendMessge(Message message)
         {
             if (Client != null)
             {

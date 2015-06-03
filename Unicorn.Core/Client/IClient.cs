@@ -9,7 +9,7 @@ namespace Unicorn.Core.Client
 {
     public interface IClient
     {
-        void SendMessge(IMessage message);
+        void SendMessge(Message message);
 
         void Connect();
     }
