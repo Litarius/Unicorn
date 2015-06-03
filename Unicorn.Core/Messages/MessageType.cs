@@ -8,7 +8,8 @@ namespace Unicorn.Core.Messages
 {
     public enum MessageType
     {
-        Ping,
+        Login,
+        SystemMessage,
         Connect,
         Message,
         Disconnect

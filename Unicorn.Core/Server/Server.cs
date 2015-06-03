@@ -4,6 +4,9 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Threading;
+using Newtonsoft.Json;
+using Unicorn.Core.Messages;
 
 namespace Unicorn.Core.Server
 {
@@ -12,7 +15,7 @@ namespace Unicorn.Core.Server
         private readonly TcpListener _server;
         private byte[] _buffer;
         private List<string> _users;
-        public event Action StatusChanged;
+        public event Action<Message> StatusChanged;
 
 
 
@@ -27,8 +30,6 @@ namespace Unicorn.Core.Server
 
         public async Task Start(string serverUserName)
         {
-            Users.Add(serverUserName);
-            NotifyStatusChanged();
             await Task.Factory.StartNew(async () =>
             {
                 try
@@ -36,6 +37,8 @@ namespace Unicorn.Core.Server
                     if (_server != null)
                     {
                         _server.Start();
+                        NotifyStatusChanged(new Message(MessageType.SystemMessage, "Запуск сервера"));
+                        NotifyStatusChanged(new Message(MessageType.Login, "", serverUserName));
 
                         while (true)
                         {
@@ -47,14 +50,13 @@ namespace Unicorn.Core.Server
 
                             while ((i = await stream.ReadAsync(_buffer, 0, _buffer.Length)) != 0)
                             {
-                                var data = System.Text.Encoding.Unicode.GetString(_buffer, 0, i);
-                                data = data.ToUpper();
+                                var data = System.Text.Encoding.UTF8.GetString(_buffer, 0, i);
+                                var messageObject = JsonConvert.DeserializeObject<Message>(data);
+                                NotifyStatusChanged(messageObject);
 
-                                byte[] msg = System.Text.Encoding.Unicode.GetBytes(data);
+                                byte[] msg = System.Text.Encoding.UTF8.GetBytes(data);
                                 stream.Write(msg, 0, msg.Length);
                             }
-
-                            client.Close();
                         }
                     }
                 }
@@ -62,24 +64,15 @@ namespace Unicorn.Core.Server
                 {
                     throw e;
                 }
-                finally
-                {
-                    if (_server != null)
-                    {
-                        _server.Stop();
-                    }
-                }
             }
             );
-
-
         }
 
-        private void NotifyStatusChanged()
+        private void NotifyStatusChanged(Message message)
         {
             if (StatusChanged != null)
             {
-                StatusChanged();
+                StatusChanged(message);
             }
         }
 

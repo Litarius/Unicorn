@@ -30,5 +30,10 @@ namespace Unicorn.View
         {
             DragMove();
         }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

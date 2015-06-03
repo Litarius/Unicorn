@@ -4,31 +4,125 @@
         Title="MainWindow"
         Width="800"
         Height="600"
+        AllowsTransparency="True"
+        Background="Transparent"
         DataContext="{Binding Source={StaticResource Locator},
-                              Path=Main}">
+                              Path=Main}"
+        ResizeMode="NoResize"
+        WindowStyle="None">
+    <Window.Resources>
+        <ResourceDictionary Source="../Styles/Style.xaml" />
+    </Window.Resources>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20" />
-            <RowDefinition Height="15*" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Menu Grid.Row="0" Grid.ColumnSpan="2">
-            <MenuItem Header="Файл">
-                <MenuItem Header="Закрыть" />
-            </MenuItem>
-        </Menu>
-        <TextBox Grid.Row="1"
-                 Grid.Column="0"
-                 Background="Azure" />
-        <ListBox Grid.Row="1"
-                 Grid.Column="1"
-                 ItemsSource="{Binding Users}" />
-        <TextBox Grid.Row="2" Grid.Column="0" />
-        <Button Grid.Row="2" Grid.Column="1">Отправить</Button>
-    </Grid>
+    <Border Margin="3">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20"
+                              Opacity="0.8"
+                              ShadowDepth="0"
+                              Color="#00a3e1" />
+        </Border.Effect>
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.ColumnSpan="3"
+                        Margin="3"
+                        MouseDown="UIElement_OnMouseDown">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="7*" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1"
+                               Style="{StaticResource HeaderStyle}"
+                               Text="Чат"
+                               TextAlignment="Center" />
+                    <StackPanel Grid.Column="2"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+                        <Button HorizontalAlignment="Right"
+                                Click="Minimaze_OnClick"
+                                Style="{StaticResource HeaderButtonStyle}">
+                            <Image Source="../Resources/minimaze.png" />
+                        </Button>
+                        <Button HorizontalAlignment="Right"
+                                Click="Maximize_OnClick"
+                                Style="{StaticResource HeaderButtonStyle}">
+                            <Image Source="../Resources/maximize.png" />
+                        </Button>
+                        <Button Click="ButtonBase_OnClick" Style="{StaticResource HeaderButtonStyle}">
+                            <Image Source="../Resources/close.png" />
+                        </Button>
+                    </StackPanel>
+
+                </Grid>
+            </StackPanel>
+
+
+
+            <Grid Grid.Row="1"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                <Menu Grid.Row="0"
+                      Grid.ColumnSpan="2"
+                      Background="#FFFFFF"
+                      FontFamily="Segoe UI Light">
+                    <MenuItem Background="#FFFFFF"
+                              FontFamily="Segoe UI Light"
+                              Header="Файл">
+                        <MenuItem Background="#FFFFFF"
+                                  BorderThickness="0"
+                                  FontFamily="Segoe UI Light"
+                                  Header="Закрыть" />
+                    </MenuItem>
+                </Menu>
+                <TextBox Grid.Row="1"
+                         Grid.Column="0"
+                         Background="Azure"
+                         FontFamily="Segoe UI Light"
+                         FontSize="14"
+                         IsReadOnly="True"
+                         Text="{Binding ChatText}" />
+                <Border Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="5">
+                    <Grid>
+                        <Label Style="{StaticResource LabelStyle}">Пользователи</Label>
+                        <ListBox Margin="0 30 0 0"
+                                 BorderThickness="0"
+                                 FontFamily="Segoe UI Light"
+                                 ItemsSource="{Binding Users}" />
+                    </Grid>
+                </Border>
+
+                <TextBox Grid.Row="2"
+                         Grid.Column="0"
+                         Margin="5 5 0 5"
+                         Style="{StaticResource TextBoxStyle}" />
+                <Button Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="5"
+                        Style="{StaticResource ButtonBase}">
+                    Отправить
+                </Button>
+            </Grid>
+        </Grid>
+    </Border>
+
 </Window>

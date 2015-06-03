@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
+using System.Windows.Threading;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
-using GalaSoft.MvvmLight.Messaging;
 using Unicorn.Core.Client;
+using Unicorn.Core.Messages;
 using Unicorn.Core.Server;
-using Unicorn.Messages;
+using Unicorn.View;
 
 namespace Unicorn.ViewModel
 {
@@ -18,6 +17,7 @@ namespace Unicorn.ViewModel
         private readonly IServer _server;
         private readonly IClient _client;
         private ObservableCollection<string> _users;
+        private string _chatText;
 
         public MainViewModel(IServer server, IClient client)
         {
@@ -25,28 +25,51 @@ namespace Unicorn.ViewModel
             _server = server;
             _server.StatusChanged += ServerOnStatusChanged;
             _client = client;
+            _chatText = string.Empty;
             StartServer();
         }
 
-        private void ServerOnStatusChanged()
+        private void ServerOnStatusChanged(Message message)
         {
-            Users.Clear();
-            foreach (var user in _server.Users)
+            Dispatcher.CurrentDispatcher.Invoke(() =>
             {
-                Users.Add(user);
-            }
+                switch (message.Type)
+                {
+                    case MessageType.Login:
+                        if (!_users.Contains(message.UserName))
+                        {
+                            _users.Add(message.UserName);
+                            RaisePropertyChanged(() => Users);
+                            ChatText += string.Format("[{0}] Пользователь {1} вошел в чат \n", DateTime.Now, message.UserName);
+                        }
+
+                        break;
+                    case MessageType.SystemMessage:
+                        ChatText += string.Format("[{0}] {1}\n", DateTime.Now, message.StringData);
+                        break;
+                }
+            });
         }
 
         private void StartServer()
         {
-            if (IsServer == true)
+            try
             {
-                _server.Start(Name);
-            }
+                if (IsServer == true)
+                {
+                    _server.Start(Name);
+                }
 
-            if (IsServer == false)
+                if (IsServer == false)
+                {
+                    _client.Connect();
+                    _client.Login(Name);
+                }
+            }
+            catch (Exception e)
             {
-                _client.Connect();
+                DialogBox dialogBox = new DialogBox("Ошибка", e.Message);
+                dialogBox.ShowDialog();
             }
 
         }
@@ -58,6 +81,16 @@ namespace Unicorn.ViewModel
             {
                 _users = value;
                 RaisePropertyChanged(() => Users);
+            }
+        }
+
+        public string ChatText
+        {
+            get { return _chatText; }
+            set
+            {
+                _chatText = value;
+                RaisePropertyChanged(() => ChatText);
             }
         }
     }

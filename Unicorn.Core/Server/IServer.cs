@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unicorn.Core.Messages;
 
 namespace Unicorn.Core.Server
 {
@@ -8,7 +9,7 @@ namespace Unicorn.Core.Server
     {
         List<string> Users { get; set; }
 
-        event Action StatusChanged;
+        event Action<Message> StatusChanged;
 
         Task Start(string serverUserName);
     }

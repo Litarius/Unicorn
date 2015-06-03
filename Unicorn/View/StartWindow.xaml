@@ -5,6 +5,8 @@
         Title="StartWindow"
         Width="300"
         Height="300"
+        AllowsTransparency="True"
+        Background="Transparent"
         DataContext="{Binding Source={StaticResource Locator},
                               Path=StartViewModel}"
         ResizeMode="NoResize"
@@ -13,73 +15,83 @@
         <ResourceDictionary Source="../Styles/Style.xaml" />
     </Window.Resources>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition Width="7*" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="25" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <StackPanel Grid.ColumnSpan="3"
-                    Margin="3"
-                    MouseDown="UIElement_OnMouseDown">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="7*" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="1"
-                           Style="{StaticResource HeaderStyle}"
-                           Text="Чат"
-                           TextAlignment="Center" />
-                <Button Grid.Column="2"
-                        Margin="0 0 3 0"
-                        HorizontalAlignment="Right"
-                        Style="{StaticResource HeaderButtonStyle}">
-                    <Image Source="../Resources/close.png" />
+    <Border Margin="3">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20"
+                              Opacity="0.8"
+                              ShadowDepth="0"
+                              Color="#00a3e1" />
+        </Border.Effect>
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.ColumnSpan="3"
+                        Margin="3"
+                        MouseDown="UIElement_OnMouseDown">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="7*" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1"
+                               Style="{StaticResource HeaderStyle}"
+                               Text="Чат"
+                               TextAlignment="Center" />
+                    <Button Grid.Column="2"
+                            Margin="0 0 3 0"
+                            HorizontalAlignment="Right"
+                            Click="ButtonBase_OnClick"
+                            Style="{StaticResource HeaderButtonStyle}">
+                        <Image Source="../Resources/close.png" />
+                    </Button>
+                </Grid>
+            </StackPanel>
+
+
+
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <RadioButton GroupName="roomType"
+                             IsChecked="{Binding IsClient}"
+                             Style="{StaticResource RadioButtonStyle}">
+                    Подключиться к комнате
+                </RadioButton>
+                <RadioButton GroupName="roomType"
+                             IsChecked="{Binding IsServer}"
+                             Style="{StaticResource RadioButtonStyle}">
+                    Создать комнату
+                </RadioButton>
+                <StackPanel Margin="0 10 0 0" Visibility="{Binding IsClient, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Label Style="{StaticResource LabelStyle}">Имя пользователя</Label>
+                    <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" />
+                    <Label Style="{StaticResource LabelStyle}">IP сервера</Label>
+                    <xctk:MaskedTextBox Mask="000.000.000.000"
+                                        Style="{StaticResource TextBoxStyle}"
+                                        Text="{Binding ServerAdress,
+                                                       UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+                <StackPanel Margin="0 10 0 0" Visibility="{Binding IsServer, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Label Style="{StaticResource LabelStyle}">Имя пользователя</Label>
+                    <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+                <Button Height="35"
+                        Margin="0 15"
+                        BorderThickness="0"
+                        Command="{Binding StartCommand}"
+                        IsEnabled="{Binding CanStart}"
+                        Style="{StaticResource ButtonBase}">
+                    Далее
                 </Button>
-            </Grid>
-        </StackPanel>
-
-
-
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <RadioButton GroupName="roomType"
-                         IsChecked="{Binding IsClient}"
-                         Style="{StaticResource RadioButtonStyle}">
-                Подключиться к комнате
-            </RadioButton>
-            <RadioButton GroupName="roomType"
-                         IsChecked="{Binding IsServer}"
-                         Style="{StaticResource RadioButtonStyle}">
-                Создать комнату
-            </RadioButton>
-            <StackPanel Margin="0 10 0 0">
-                <Label Style="{StaticResource LabelStyle}">Имя пользователя</Label>
-                <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" />
-                <Label Style="{StaticResource LabelStyle}">IP сервера</Label>
-                <xctk:MaskedTextBox Mask="000.000.000.000"
-                                    Style="{StaticResource TextBoxStyle}"
-                                    Text="{Binding ServerAdress,
-                                                   UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
-            <StackPanel Margin="0 10 0 0" Visibility="{Binding IsClient, Converter={StaticResource BooleanToVisibilityConverter}}">
-                <Label Style="{StaticResource LabelStyle}">Имя пользователя</Label>
-                <TextBox Style="{StaticResource TextBoxStyle}" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" />
-            </StackPanel>
-            <Button Height="35"
-                    Margin="0 15"
-                    BorderThickness="0"
-                    Command="{Binding StartCommand}"
-                    IsEnabled="{Binding CanStart}"
-                    Style="{StaticResource ButtonBase}">
-                Далее
-            </Button>
-        </StackPanel>
-    </Grid>
+        </Grid>
+    </Border>
+
 
 </Window>
