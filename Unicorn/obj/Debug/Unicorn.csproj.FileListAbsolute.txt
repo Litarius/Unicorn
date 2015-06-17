@@ -54,3 +54,7 @@ D:\Unicorn\Unicorn\obj\Debug\Unicorn.Properties.Resources.resources
 D:\Unicorn\Unicorn\obj\Debug\Unicorn.csproj.GenerateResource.Cache
 D:\Unicorn\Unicorn\obj\Debug\Unicorn.exe
 D:\Unicorn\Unicorn\obj\Debug\Unicorn.pdb
+D:\Unicorn\Unicorn\obj\Debug\View\PersonalChatWindow.baml
+D:\Unicorn\Unicorn\obj\Debug\View\PersonalChatWindow.g.cs
+D:\Unicorn\Unicorn\obj\Debug\View\FileTransferDialog.baml
+D:\Unicorn\Unicorn\obj\Debug\View\FileTransferDialog.g.cs

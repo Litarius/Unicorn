@@ -107,7 +107,18 @@
                         <ListBox Margin="0 30 0 0"
                                  BorderThickness="0"
                                  FontFamily="Segoe UI Light"
-                                 ItemsSource="{Binding Users}" />
+                                 ItemsSource="{Binding Users}">
+                            <ListBox.ContextMenu>
+                                <ContextMenu Background="White">
+                                    <MenuItem Background="White"
+                                              FontFamily="Segoe UI Light"
+                                              Header="Отправить сообщение" />
+                                    <MenuItem Background="White"
+                                              FontFamily="Segoe UI Light"
+                                              Header="Отправить файл" />
+                                </ContextMenu>
+                            </ListBox.ContextMenu>
+                        </ListBox>
                     </Grid>
                 </Border>
 

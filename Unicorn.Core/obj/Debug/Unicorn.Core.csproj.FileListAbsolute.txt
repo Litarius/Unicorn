@@ -6,3 +6,4 @@ D:\Unicorn\Unicorn.Core\bin\Debug\Autofac.xml
 D:\Unicorn\Unicorn.Core\bin\Debug\Newtonsoft.Json.xml
 D:\Unicorn\Unicorn.Core\obj\Debug\Unicorn.Core.dll
 D:\Unicorn\Unicorn.Core\obj\Debug\Unicorn.Core.pdb
+D:\Unicorn\Unicorn.Core\obj\Debug\Unicorn.Core.csprojResolveAssemblyReference.cache

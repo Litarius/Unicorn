@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.TextFormatting;
 
@@ -40,6 +41,11 @@ namespace Unicorn.View
         private void Minimaze_OnClick(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        private void SendMessage(object sender, RoutedEventArgs e)
+        {
+            MainBox.Text += string.Format("[{0}] Пользователь 2: {1}", DateTime.Now, Msg.Text);
         }
     }
 }

@@ -53,6 +53,7 @@
     <Compile Include="Messages\Message.cs" />
     <Compile Include="Messages\MessageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RSACryptoProvider.cs" />
     <Compile Include="Server\IServer.cs" />
     <Compile Include="Server\Server.cs" />
     <Compile Include="User.cs" />
